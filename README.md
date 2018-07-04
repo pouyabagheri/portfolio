@@ -7,6 +7,8 @@ Pouya's portfolio site
 Home page should show image gallery
 http://www.rolandsnooks.com/ - layout like this site
 
+Host password protection using free Azure Account - Singup Pouya for free Azure Account
+
 Ideas -
 1. Background as image
 2. Change whole background color of site
