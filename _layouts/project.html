@@ -1,0 +1,20 @@
+---
+layout: default
+support: [jquery, gallery]
+---
+
+<h1>This is a project</h1>
+<h1>{{ page.title }}</h1>
+
+{{ content }}
+
+{% assign pageurl = page.url | replace: 'writeup.html', '' %}
+{% assign myCollection = site.collections | where: "label", "projects" | first %}
+{% for file in myCollection.files %}
+  {% assign modifiedpath = file.path | replace_first: "_projects", "/projects" %}
+  {% if modifiedpath contains pageurl %}
+    {% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}
+    <img src="{{ modifiedpath }}" />
+    {% endif %}
+  {% endif %}
+{% endfor %}
