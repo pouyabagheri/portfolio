@@ -11,7 +11,7 @@ layout: default
 
   This will have a projects gallery
   {% for project in site.projects %}
-    <a href="{{ project.url }}"><h1>{{ project.title }}</h1></a>
+    <a href="{{ project.url | absolute_url }}"><h1>{{ project.title }}</h1></a>
   {% endfor %}
 
 </div>
