@@ -8,6 +8,7 @@ support: [jquery, gallery]
 
 {{ content }}
 
+<div class="galleria">
 {% assign pageurl = page.url | replace: 'writeup.html', '' %}
 {% assign myCollection = site.collections | where: "label", "projects" | first %}
 {% for file in myCollection.files %}
@@ -18,3 +19,12 @@ support: [jquery, gallery]
     {% endif %}
   {% endif %}
 {% endfor %}
+</div>
+
+<script>
+  $(document).ready(function () {
+    (function() { 
+        Galleria.run('.galleria');
+    }());
+  })
+</script>
