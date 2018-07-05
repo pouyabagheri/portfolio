@@ -14,4 +14,27 @@ layout: default
     <a href="{{ project.url| relative_url }}"><h1>{{ project.title }}</h1></a>
   {% endfor %}
 
+  <div class="grid" id="projectsgallery">
+    {% assign myCollection = site.collections | where: "label", "projects" | first %}
+    {% for file in myCollection.files %}
+      {% assign modifiedpath = file.path | replace_first: "_projects", "/projects" %}
+        {% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}
+        <div class="grid-item">
+          <img src="{{ modifiedpath | relative_url }}" />
+        </div>
+        {% endif %}
+    {% endfor %}
+  </div>
+  <script>
+    $(document).ready(function () {
+      var $grid = $('.grid').masonry({
+        itemSelector : '.grid-item',
+        columnWidth : 100
+      });
+    
+      $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+      });
+    })
+  </script>
 </div>
