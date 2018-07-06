@@ -8,6 +8,7 @@ Home page should show image gallery
 http://www.rolandsnooks.com/ - layout like this site
 
 Host password protection using free Azure Account - Singup Pouya for free Azure Account
+Buy a domain and host email somewhere e.g., hello@pouyabagheri.com (try this - https://workplace.zoho.com/orgsignup.do?plan=free)
 
 Ideas -
 1. Background as image
