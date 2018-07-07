@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Pouya's portfolio site\r 1. Projects Gallery\r 2. Blog Post\r 3. Contact\r 4. About",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pouyabagheri/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pouyabagheri/portfolio/issues"
+  },
+  "homepage": "https://github.com/pouyabagheri/portfolio#readme",
+  "dependencies": {
+    "@types/hapi": "^17.0.15",
+    "@types/pg": "^7.4.10",
+    "hapi": "^17.5.2",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}

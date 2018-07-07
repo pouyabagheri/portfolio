@@ -15,3 +15,6 @@ Ideas -
 2. Change whole background color of site
 3. Logo gallery OR randomly select a logo and show on each page refresh
 
+Heroku links-
+https://stackoverflow.com/questions/43317980/how-do-i-deploy-my-typescript-node-js-app-to-heroku
+https://devcenter.heroku.com/articles/nodejs-support#build-behavior
