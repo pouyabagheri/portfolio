@@ -18,3 +18,11 @@ Ideas -
 Heroku links-
 https://stackoverflow.com/questions/43317980/how-do-i-deploy-my-typescript-node-js-app-to-heroku
 https://devcenter.heroku.com/articles/nodejs-support#build-behavior
+
+For gallery
+1. one image will end with word cover
+2. other images will end with number which will indicate order to show
+3. in mobile screen, text before images or text above and below images
+4. Gallery - no borders and transparent background/light gray
+
+change menu order to  - Posts/About/Contact
