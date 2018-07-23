@@ -52,3 +52,8 @@ defaults:
       type: "projects"
     values:
       layout: project
+
+header_pages:
+  - post.md
+  - about.md
+  - contact.md
