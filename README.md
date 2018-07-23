@@ -4,7 +4,7 @@ Pouya's portfolio site
 3. Contact
 4. About
 
-Home page should show image gallery
+Done - Home page should show image gallery
 http://www.rolandsnooks.com/ - layout like this site
 
 Host password protection using free Azure Account - Singup Pouya for free Azure Account
@@ -23,6 +23,6 @@ For gallery
 1. one image will end with word cover
 2. other images will end with number which will indicate order to show
 3. in mobile screen, text before images or text above and below images
-4. Gallery - no borders and transparent background/light gray
+Done - 4. Gallery - no borders and transparent background/light gray
 
-change menu order to  - Posts/About/Contact
+Done - change menu order to  - Posts/About/Contact
