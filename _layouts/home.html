@@ -9,15 +9,11 @@ layout: default
 
   {{ content }}
 
-  This will have a projects gallery
-  {% for project in site.projects %}
-    <a href="{{ project.url| relative_url }}"><h1>{{ project.title }}</h1></a>
-  {% endfor %}
-
   <div class="grid" id="projectsgallery">
     {% assign myCollection = site.collections | where: "label", "projects" | first %}
     {% for file in myCollection.files %}
       {% assign modifiedpath = file.path | replace_first: "_projects", "/projects" %}
+      {% if file.name contains 'cover.' %}
         {% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}
         
           {% assign modifiedpathsplits = modifiedpath | split: "/" %}
@@ -37,6 +33,7 @@ layout: default
             </a>
           </div>
         {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
   <script>
