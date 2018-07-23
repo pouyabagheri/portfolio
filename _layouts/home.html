@@ -19,9 +19,23 @@ layout: default
     {% for file in myCollection.files %}
       {% assign modifiedpath = file.path | replace_first: "_projects", "/projects" %}
         {% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}
-        <div class="grid-item">
-          <img src="{{ modifiedpath | relative_url }}" />
-        </div>
+        
+          {% assign modifiedpathsplits = modifiedpath | split: "/" %}
+          {% assign imageProjectPath = "" %}
+          {% for splt in modifiedpathsplits %}
+            {% if forloop.first == true %}
+              {% assign imageProjectPath = imageProjectPath | append: splt %}
+            {% elsif forloop.last == false %}
+              {% assign imageProjectPath = imageProjectPath | append: "/" | append: splt %}
+            {% endif %}
+          {% endfor %}
+          {% assign imageProjectPath = imageProjectPath | append: "/writeup.html"  %}
+        
+          <div class="grid-item">
+            <a href="{{ imageProjectPath | relative_url }}">
+              <img src="{{ modifiedpath | relative_url }}" />
+            </a>
+          </div>
         {% endif %}
     {% endfor %}
   </div>
