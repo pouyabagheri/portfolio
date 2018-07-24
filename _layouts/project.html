@@ -9,8 +9,9 @@ support: [jquery, gallery]
 
 <div class="galleria">
 {% assign pageurl = page.url | replace: 'writeup.html', '' %}
-{% assign myCollection = site.collections | where: "label", "projects" | first %}
-{% for file in myCollection.files %}
+{% assign allfiles = site.collections | where: "label", "projects" | first %}
+{% assign sortedfiles = allfiles.files | sort: "name" %}
+{% for file in sortedfiles %}
   {% assign modifiedpath = file.path | replace_first: "_projects", "/projects" %}
   {% if modifiedpath contains pageurl %}
     {% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}
