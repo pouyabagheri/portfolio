@@ -15,7 +15,7 @@ title: Contact
         </li>
         <li>
             <label for="name">Message</label>
-            <textarea rows="10" placeholder="Your message" required></textarea>
+            <textarea name="message" rows="10" placeholder="Your message" required></textarea>
         </li>
         <li>
             <button type="submit">Submit</button>
