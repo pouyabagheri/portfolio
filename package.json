@@ -6,7 +6,7 @@
   "scripts": {
     "build": "bundle exec jekyll build --baseurl='' && ./node_modules/.bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./app.js",
+    "start": "node ./app.js 3000 mailkey",
     "postinstall": "bundle exec jekyll build --baseurl='' && ./node_modules/.bin/tsc"
   },
   "repository": {

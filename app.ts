@@ -6,8 +6,12 @@ import NodeMailer = require('nodemailer');
 import Mail = require('nodemailer/lib/mailer');
 import fs = require('fs');
 
+const argv = process.argv.slice(2);
+const port = argv[0];
+const mailkey = argv[1];
+
 const server = new Hapi.Server({
-    port: 3000,
+    port: port,
     host: '0.0.0.0'
 });
 
@@ -165,7 +169,7 @@ function createnodemailer() {
         secure: true,
         auth: {
             user: "admin@gursharan.xyz",
-            pass: "set a password here"
+            pass: mailkey
         }
     });
 }
