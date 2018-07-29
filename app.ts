@@ -60,12 +60,13 @@ server.route({
         }
     },
     handler: async (request, h) => {
+        request.method
         const payload = request.payload as any;
         const email = payload["email"];
         console.log("access request email is " + email);
         
         const transporter = createnodemailer();
-        const emailmessage = "click on this link to access";
+        const emailmessage = `click on this link to access - http://localhost:3000/checkaccessrequest?test`;
         const mailOptions = {
             from: 'admin@gursharan.xyz', // sender address
             to: email, // list of receivers
@@ -80,19 +81,69 @@ server.route({
     }
 });
 
+const portfolioAccessCookieName = 'portfolio-access';
+server.state(portfolioAccessCookieName, {
+    ttl: null,
+    isSecure: false,
+    isHttpOnly: true,
+    encoding: 'base64json',
+    clearInvalid: false, // remove invalid cookies
+    strictHeader: true // don't allow violations of RFC 6265
+});
+
+server.route({
+    method: 'GET',
+    path: '/checkaccessrequest',
+    handler: async (request, h) => {
+        const query = request.url.query;
+        console.log(query);
+        h.state(portfolioAccessCookieName, {portfoliouser: 'test@test.com'});
+        return h.redirect("/");
+    }
+});
+
 const init = async () => {
     await server.register(Inert);
-    const projectedprojects = JSON.parse(fs.readFileSync('protectedprojects.json', 'utf8'));
+    let projectedprojects = JSON.parse(fs.readFileSync('protectedprojects.json', 'utf8')) as string[];
+    projectedprojects = projectedprojects.map(p => p.toUpperCase());
+    console.log(projectedprojects);
+    
     server.route({
         method: 'GET',
         path: '/{param*}',
-        // options: {
-        //     // refer -https://github.com/hapijs/hapi/blob/master/API.md#lifecycle-methods - onpreauth etc
-        // },
-        handler: {
-            directory: {
-                path: '_site',
-                index: ['index.html']
+        options: {
+            state: {
+                parse: true
+            },
+            pre: [
+                {
+                    method: (request, h) => {
+                        const urlparts = request.path.split("/").map(u => u.toUpperCase());
+                        if(urlparts.length >= 2) {
+                            const isProtected = projectedprojects.find((protectedproject) => protectedproject === urlparts[2]);
+                            if(isProtected) {
+                                console.log(`this path is protected: ${request.path}`);
+                                const portfolioaccess = request.state[portfolioAccessCookieName];
+                                console.log(`cookie is ${portfolioaccess}`);
+                                if(portfolioaccess && portfolioaccess.portfoliouser) {
+                                    return h;
+                                }
+                                if(request.path.toUpperCase().endsWith(".HTML")) {
+                                    return h.redirect("/requestaccess.html").takeover();
+                                }
+                                return h.redirect("/401.jpg").takeover();
+                            }
+                        }
+                        return h;
+                    },
+                    assign: "cookiecheck"
+                }
+            ],
+            handler: {
+                directory: {
+                    path: '_site',
+                    index: ['index.html']
+                }
             }
         }
     });
