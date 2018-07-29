@@ -9,6 +9,7 @@ import fs = require('fs');
 const argv = process.argv.slice(2);
 const port = argv[0];
 const mailkey = argv[1];
+const mailurl = argv[2];
 
 const server = new Hapi.Server({
     port: port,
@@ -70,7 +71,7 @@ server.route({
         console.log("access request email is " + email);
         
         const transporter = createnodemailer();
-        const emailmessage = `click on this link to access - http://localhost:3000/checkaccessrequest?test`;
+        const emailmessage = `click on this link to access - ${mailurl}/checkaccessrequest?test`;
         const mailOptions = {
             from: 'admin@gursharan.xyz', // sender address
             to: email, // list of receivers

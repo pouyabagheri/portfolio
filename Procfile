@@ -1,1 +1,1 @@
-web: node ./app.js $PORT $MAILKEY
+web: node ./app.js $PORT $MAILKEY $MAILURL
